@@ -35,6 +35,25 @@ cscript ospp.vbs /act
 cscript ospp.vbs /dstatusall
 ```
 
+# 시작 프로그램 설정
+	A. 서비스 파일 생성
+		vi /etc/systemd/system/kms.service
+
+		[Unit]	
+		Wants=docker.service
+		After=docker.service
+		
+		[Service]
+		RemainAfterExit=yes
+		ExecStart=/usr/bin/docker run --name kms -it -d -p 1688:1688 insilicosp/vlmcsd
+		ExecStop=/usr/bin/docker stop kms
+		
+		[Install]
+		WantedBy=multi-user.targe
+	B. 데몬 재시작
+		systemctl daemon-reload
+	C. 시작 프로그램 등록
+    	systemctl enable kms.service
 
 - Source Code:
 You can download source code on [https://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-Windows-platforms](https://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-Windows-platforms)
