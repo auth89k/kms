@@ -49,7 +49,7 @@ cscript ospp.vbs /dstatusall
 		ExecStop=/usr/bin/docker stop kms
 		
 		[Install]
-		WantedBy=multi-user.targe
+		WantedBy=multi-user.target
 	B. 데몬 재시작
 		systemctl daemon-reload
 	C. 시작 프로그램 등록
