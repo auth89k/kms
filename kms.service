@@ -16,4 +16,4 @@ ExecStop=/usr/bin/docker stop kms
 
 [Install]
 
-WantedBy=multi-user.targe
+WantedBy=multi-user.target
